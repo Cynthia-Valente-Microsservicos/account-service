@@ -1,0 +1,2 @@
+ALTER TABLE accounts.accounts
+ADD COLUMN pass_sha256 VARCHAR(64) NOT NULL;
