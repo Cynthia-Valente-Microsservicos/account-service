@@ -13,11 +13,11 @@ spec:
         app: account
     spec:
       containers:
-          - name: account
-            image: cynthiayasutake/account:latest
-            imagePullPolicy: Always
-            ports:
-              - containerPort: 8080
+        - name: account
+          image: 730335608828.dkr.ecr.us-east-2.amazonaws.com/account:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
 
 ---
 
