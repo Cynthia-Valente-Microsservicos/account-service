@@ -19,7 +19,7 @@ pipeline {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding', 
                     credentialsId: 'aws-cynthia-keys'
-                ]])
+                ]]) { // <--- CHAVE CORRIGIDA AQUI
                     sh "aws ecr get-login-password --region ${env.AWS_REGION} | docker login --username AWS --password-stdin ${env.ECR_REGISTRY}"
                     
                     sh "docker build -t ${env.ECR_REGISTRY}/${env.SERVICE}:latest -f ../account-service/Dockerfile ."
@@ -42,3 +42,4 @@ pipeline {
             }
         }
     }
+}
