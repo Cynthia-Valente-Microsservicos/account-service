@@ -1,7 +1,7 @@
 pipeline {
     agent any    
     environment {
-        SERVICE        = 'account-service'
+        SERVICE        = 'account'
         AWS_ACCOUNT_ID = "${env.AWS_ACCOUNT_ID}" 
         AWS_REGION     = "${env.AWS_REGION}"           
         ECR_REGISTRY   = "${env.AWS_ACCOUNT_ID}.dkr.ecr.${env.AWS_REGION}.amazonaws.com"
