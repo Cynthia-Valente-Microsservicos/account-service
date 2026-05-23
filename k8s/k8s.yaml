@@ -20,11 +20,14 @@ spec:
             - containerPort: 8080
           env:
             - name: DATABASE_HOST
-              value: "store-db.c123456789.us-east-2.rds.amazonaws.com" # <-- Subustitua pelo seu Endpoint real do RDS
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: database-host
             - name: DATABASE_PORT
               value: "5432"
             - name: DATABASE_DB
-              value: "store"
+              value: "postgres"
             - name: DATABASE_USERNAME
               value: "store"
             - name: DATABASE_PASSWORD
