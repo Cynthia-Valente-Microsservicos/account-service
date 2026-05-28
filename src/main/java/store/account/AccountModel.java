@@ -31,11 +31,15 @@ public class AccountModel {
     @Column(name = "password_sha256")
     private String passwordSha256;
 
+    @Column(name = "role")
+    private Role role;
+
     public AccountModel(Account a) {
         this.id = a.id();
         this.name = a.name();
         this.email = a.email();
         this.passwordSha256 = a.passwordSha256();
+        this.role = a.role();
     }
 
     public Account to() {
@@ -44,6 +48,7 @@ public class AccountModel {
             .name(this.name)
             .email(this.email)
             .passwordSha256(this.passwordSha256)
+            .role(this.role)
             .build();
     }
 
