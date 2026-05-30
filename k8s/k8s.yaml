@@ -13,7 +13,7 @@ spec:
         app: account
     spec:
       containers:
-        - name: account 
+        - name: account
           image: 730335608828.dkr.ecr.us-east-2.amazonaws.com/account:latest
           imagePullPolicy: Always
           ports:
@@ -34,17 +34,21 @@ spec:
             - name: DATABASE_PORT
               value: "5432"
             - name: DATABASE_DB
-              value: "postgres"
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-configmap
+                  key: POSTGRES_DB
             - name: DATABASE_USERNAME
-              value: "store"
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secrets
+                  key: POSTGRES_USER
             - name: DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: db-credentials
                   key: database-password
-
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
@@ -56,4 +60,4 @@ spec:
     - protocol: TCP
       port: 8080
       targetPort: 8080
-  type: LoadBalancer
+  type: ClusterIP

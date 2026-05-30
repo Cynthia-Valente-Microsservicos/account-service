@@ -25,4 +25,4 @@ management:
     web:
       base-path: /accounts/actuator
       exposure:
-        include: ['prometheus']
+        include: ['prometheus', 'health']
