@@ -13,6 +13,7 @@ public class AccountParser {
                 .id(in.id())
                 .name(in.name())
                 .email(in.email())
+                .role(in.role())
                 .build();
     }
 
@@ -26,6 +27,7 @@ public class AccountParser {
                 .name(in.name())
                 .email(in.email())
                 .password(in.password())
+                .role(in.role() == null ? Role.USER : in.role())
                 .build();
     }   
 }
